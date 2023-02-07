@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AirlineReservation.Migrations
 {
-    public partial class FlightDbRedy : Migration
+    public partial class NewFab : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "flights",
+                name: "Flights",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -24,14 +24,34 @@ namespace AirlineReservation.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_flights", x => x.Id);
+                    table.PrimaryKey("PK_Flights", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserTicketİnfos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SureName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FatherName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Fincode = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserTicketİnfos", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "flights");
+                name: "Flights");
+
+            migrationBuilder.DropTable(
+                name: "UserTicketİnfos");
         }
     }
 }

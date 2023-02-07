@@ -15,13 +15,17 @@ namespace AirlineReservation.Controllers
 		}
 		public IActionResult Index(Search search)
 		{
-			foreach(var a in _applicationDbContext.flights.ToList())
+			foreach(var a in _applicationDbContext.Flights.ToList())
 			{
-				if (search.TAirport == a.ToAirport && search.FAirport == a.FromAirport)
+				DateTime dateTime = a.FlightDay;
+				DateOnly dateOnly = DateOnly.FromDateTime(dateTime);
+				DateTime dateTime1 = search.DateTimeAirdate;
+				DateOnly dateOnly1=DateOnly.FromDateTime(dateTime1);
+				if (search.TAirport == a.ToAirport && search.FAirport == a.FromAirport && dateOnly == dateOnly1)
 				{
 					DestinationViewModel destinationViewModel = new DestinationViewModel()
 					{
-						flightsı = _applicationDbContext.flights.Where(x => x.FromAirport == search.FAirport).Where(x => x.ToAirport == search.TAirport).ToList(),
+						flightsı = _applicationDbContext.Flights.Where(x => x.FromAirport == search.FAirport && x.ToAirport == search.TAirport && x.FlightDay == search.DateTimeAirdate).ToList(),
 					};
 					return View(destinationViewModel);
 				}

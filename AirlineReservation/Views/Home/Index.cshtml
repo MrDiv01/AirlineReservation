@@ -21,7 +21,7 @@
 								<div class="tab-content">
 									<div class="tab-content-inner active" data-content="signup">
 										<h3>Book Your Trip</h3>
-										<form method="post" action="#">
+										<form method="post">
 											<div class="row form-group">
 												<div class="col-md-12">
 													<label for="activities">From Witch City</label>
@@ -38,13 +38,13 @@
 											<div class="row form-group">
 												<div class="col-md-12">
 													<label for="date-start">Date Travel</label>
-													<input asp-for="DateTimeAirdate" class="form-control">
+													<input type="date" asp-for="DateTimeAirdate" class="form-control">
 												</div>
 											</div>
 
 											<div class="row form-group">
 												<div class="col-md-12">
-													<input asp-action="index" asp-controller="Destination" asp-route-FAirport="FAirport" type="submit" class="btn btn-primary btn-block" value="Submit">
+													<input asp-action="index" asp-controller="Destination" type="submit" class="btn btn-primary btn-block" value="Submit">
 												</div>
 											</div>
 										</form>

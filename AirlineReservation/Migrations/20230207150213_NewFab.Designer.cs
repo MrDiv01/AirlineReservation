@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AirlineReservation.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230206173556_UpdateUserInfoTable")]
-    partial class UpdateUserInfoTable
+    [Migration("20230207150213_NewFab")]
+    partial class NewFab
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,7 +54,7 @@ namespace AirlineReservation.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("flights");
+                    b.ToTable("Flights");
                 });
 
             modelBuilder.Entity("AirlineReservation.Models.UserTicketİnfo", b =>
@@ -77,9 +77,6 @@ namespace AirlineReservation.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("FlightId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -90,20 +87,7 @@ namespace AirlineReservation.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FlightId");
-
                     b.ToTable("UserTicketİnfos");
-                });
-
-            modelBuilder.Entity("AirlineReservation.Models.UserTicketİnfo", b =>
-                {
-                    b.HasOne("AirlineReservation.Models.Flight", "Flight")
-                        .WithMany()
-                        .HasForeignKey("FlightId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Flight");
                 });
 #pragma warning restore 612, 618
         }

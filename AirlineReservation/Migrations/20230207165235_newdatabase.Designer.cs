@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AirlineReservation.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230206150614_FlightDbRedy")]
-    partial class FlightDbRedy
+    [Migration("20230207165235_newdatabase")]
+    partial class newdatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,7 +54,40 @@ namespace AirlineReservation.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("flights");
+                    b.ToTable("Flights");
+                });
+
+            modelBuilder.Entity("AirlineReservation.Models.UserTicket", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FatherName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Fincode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SureName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserTickets");
                 });
 #pragma warning restore 612, 618
         }
