@@ -1,4 +1,6 @@
-﻿namespace AirlineReservation.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace AirlineReservation.Models
 {
     public class UserTicket
     {
@@ -8,5 +10,7 @@
         public string FatherName { get; set; }
         public string Fincode { get; set; }
         public string Email { get; set; }
+        [NotMapped]
+        public int FlightId { get; set; }
     }
 }

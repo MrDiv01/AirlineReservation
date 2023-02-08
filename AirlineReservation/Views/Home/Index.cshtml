@@ -22,16 +22,20 @@
 									<div class="tab-content-inner active" data-content="signup">
 										<h3>Book Your Trip</h3>
 										<form method="post">
+											<div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
 											<div class="row form-group">
 												<div class="col-md-12">
 													<label for="activities">From Witch City</label>
 													<input asp-for="FAirport" class="form-control">
+													<span asp-validation-for="FAirport" class="text-danger"></span>
 												</div>
 											</div>
 											<div class="row form-group">
 												<div class="col-md-12">
 													<label for="destination">To Witch City</label>
 													<input asp-for="TAirport" class="form-control">
+													<span asp-validation-for="TAirport" class="text-danger"></span>
+
 												</div>
 											</div>
 
@@ -39,12 +43,13 @@
 												<div class="col-md-12">
 													<label for="date-start">Date Travel</label>
 													<input type="date" asp-for="DateTimeAirdate" class="form-control">
+													<span asp-validation-for="DateTimeAirdate" class="text-danger"></span>
 												</div>
 											</div>
 
 											<div class="row form-group">
 												<div class="col-md-12">
-													<input asp-action="index" asp-controller="Destination" type="submit" class="btn btn-primary btn-block" value="Submit">
+													<input @*asp-action="index" asp-controller="Destination" *@type="submit" class="btn btn-primary btn-block" value="Submit">
 												</div>
 											</div>
 										</form>

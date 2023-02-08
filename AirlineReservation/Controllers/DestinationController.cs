@@ -15,9 +15,20 @@ namespace AirlineReservation.Controllers
 		}
 		public IActionResult Index(Search search)
 		{
-			foreach(var a in _applicationDbContext.Flights.ToList())
+			if (!ModelState.IsValid)
 			{
-				DateTime dateTime = a.FlightDay;
+				string result = Url.Action("Index", "Home");
+
+				return Redirect(result);
+			}
+			foreach (var a in _applicationDbContext.Flights.ToList())
+			{
+				if(a.Count <=  0)
+				{
+                    return RedirectToAction("Errors", "Error");
+
+                }
+                DateTime dateTime = a.FlightDay;
 				DateOnly dateOnly = DateOnly.FromDateTime(dateTime);
 				DateTime dateTime1 = search.DateTimeAirdate;
 				DateOnly dateOnly1=DateOnly.FromDateTime(dateTime1);
