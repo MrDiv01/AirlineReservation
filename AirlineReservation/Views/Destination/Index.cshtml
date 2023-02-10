@@ -32,12 +32,16 @@
                 TimeOnly timeOnly = TimeOnly.FromDateTime(dateTime2);
                 DateTime dateTime3 = flight.AriveTime;
                 TimeOnly timeOnly1 = TimeOnly.FromDateTime(dateTime3);
+                DateTime dateTime = flight.FlightDay;
+                DateOnly dateOnly = DateOnly.FromDateTime(dateTime);
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <a asp-route-Id="@flight.Id" asp-action="index" asp-controller="Ticket" class="fh5co-card-item ">
                         <div class="fh5co-text">
                             <h2>@flight.FromAirport</h2>
                             <span>to</span>
                             <h2>@flight.ToAirport</h2>
+                            <span>Flight Day</span>
+                            <p>@dateOnly</p>
                             <span>Departure Time</span>
                             <p>@timeOnly</p>
                             <span>Arive Time</span>

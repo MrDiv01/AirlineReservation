@@ -58,7 +58,7 @@ namespace AirlineReservation.Controllers
                 client.Credentials= credential;
                 MailMessage message = new MailMessage("nurlan.memmedov8818@gmail.com",userTicket.Email);
                 message.Subject = "Airline Reservation";
-                message.Body ="Hi "+userTicket.Name + ". " + " Have a nice trip " + "From " +fligh.FromAirport +" To " +fligh.ToAirport +" At " +fligh.FlightDay;
+                message.Body ="Hi "+userTicket.Name + ". " + " Have a nice trip " + "From " +fligh.FromAirport +" To " +fligh.ToAirport +" At " +fligh.DepartureTime;
                 message.IsBodyHtml = false;
                 client.Send(message);
             }

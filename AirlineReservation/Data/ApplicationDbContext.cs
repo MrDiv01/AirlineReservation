@@ -8,6 +8,8 @@ namespace AirlineReservation.Data
 		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 		public DbSet<Flight> Flights { get; set; }
 		public DbSet<UserTicket> UserTickets { get; set; }
+		public DbSet<Contact> Contacts { get; set; }
+		public DbSet<Adres> Adresss { get; set; }
    //     protected override void OnModelCreating(ModelBuilder modelBuilder)
    //     {
 			//modelBuilder.Entity<UserTicketİnfo>(c => c.Property(e => e.Id).UseIdentityColumn());
