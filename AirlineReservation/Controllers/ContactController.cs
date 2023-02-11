@@ -19,6 +19,7 @@ namespace AirlineReservation.Controllers
         [HttpPost]
         public IActionResult AddMessages(Contact contact)
         {
+            contact.DateTime = DateTime.Now;
             _applicationDbContext.Contacts.Add(contact);
             _applicationDbContext.SaveChanges();
             return RedirectToAction("Index", "Home");
