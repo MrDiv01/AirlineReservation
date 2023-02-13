@@ -1,0 +1,32 @@
+﻿@using AirlineReservation.Models;
+@model List<UserTicket>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-condensed mb-4">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>SureName</th>
+                <th>Father Name</th>
+                <th>FinCode</th>
+                <th>Email</th>
+                <th>Flight</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (UserTicket userTicket in Model)
+            {
+                <tr>
+                    <td>@userTicket.Name</td>
+                    <td>@userTicket.SureName</td>
+                    <td>@userTicket.FatherName</td>
+                    <td>@userTicket.Fincode</td>
+                    <td>@userTicket.Email</td>
+                    <td>@userTicket.FlightId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

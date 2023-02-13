@@ -10,7 +10,6 @@ namespace AirlineReservation.Models
         public string FatherName { get; set; }
         public string Fincode { get; set; }
         public string Email { get; set; }
-        [NotMapped]
-        public int FlightId { get; set; }
+        public int? FlightId { get; set; }
     }
 }

@@ -1,16 +1,33 @@
-﻿using AirlineReservation.Models;
+﻿using AirlineReservation.Data;
+using AirlineReservation.Models;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Diagnostics;
 using System.Speech.Recognition;
 namespace AirlineReservation.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ApplicationDbContext _applicationDbContext;
 
+        public HomeController(ApplicationDbContext applicationDbContext)
+        {
+            _applicationDbContext = applicationDbContext;
+        }
         public IActionResult Index()
         {
-			return View();
+            List<Flight> flights= _applicationDbContext.Flights.ToList();
+            List<UserTicket> userTickets = _applicationDbContext.UserTickets.ToList();
+            foreach(Flight flight in flights)
+            {
+                if(flight.DepartureTime <DateTime.Now ||flight.Count == 0)
+                {
+                    _applicationDbContext.Flights.Remove(flight);
+                    _applicationDbContext.SaveChanges();
+                }
+            }
+            return View();
         }
 
         [HttpPost]

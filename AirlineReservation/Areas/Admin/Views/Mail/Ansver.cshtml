@@ -1,0 +1,19 @@
+﻿@using AirlineReservation.Models;
+@model AdminAnsver
+@{
+    ViewData["Title"] = "Ansver";
+}
+<div class="container" >
+    <form asp-action="Ansver" method="post">
+        <div class="form-group">
+            <label asp-for="Messages">Example textarea</label>
+            <textarea asp-for="Messages" class="form-control" rows="3"></textarea>
+        </div>
+        <input hidden asp-for="ContactID" value="@ViewBag.Id" />
+
+        <div style="width:100%; display:flex;justify-content:center;">
+            <button asp-route-Id="ViewBag.Id" type="submit" class="btn btn-primary">Send</button>
+        </div>
+    </form>
+</div>
+
