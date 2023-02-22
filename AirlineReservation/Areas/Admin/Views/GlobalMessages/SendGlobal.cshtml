@@ -1,0 +1,16 @@
+﻿@using AirlineReservation.Models;
+@model Messages
+@{
+    ViewData["Title"] = "SendGlobal";
+}
+<div class="container" >
+    <form asp-action="SendGlobal" method="post">
+        <div class="form-group">
+            <label asp-for="Mesage">Example textarea</label>
+            <textarea asp-for="Mesage" class="form-control" rows="3"></textarea>
+        </div>
+        <div style="width:100%; display:flex;justify-content:center;">
+            <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+    </form>
+</div>

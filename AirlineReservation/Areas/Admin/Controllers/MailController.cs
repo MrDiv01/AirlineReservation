@@ -34,20 +34,21 @@ namespace AirlineReservation.Areas.Admin.Controllers
             _aaplicationDbContext.SaveChanges();
             try
             {
-                SmtpClient client = new SmtpClient("smtp-mail.outlook.com");
-                client.Port = 587;
-                client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                client.UseDefaultCredentials = false;
-                System.Net.NetworkCredential credential = new System.Net.NetworkCredential("nurlan.memmedov8818@gmail.com", "Nurlanaztu2003.");
-                client.EnableSsl = true;
-                client.Credentials = credential;
-                MailMessage message = new MailMessage("nurlan.memmedov8818@gmail.com", contact.Email);
-                message.Subject = "Airline Reservation";
-                message.Body = "Salam Dəyərli Müştıri Göndərdiyiniz Sualla bağlı Komandamızız Cavabı belədir." + " " +adminAnsver.Messages;
-                message.IsBodyHtml = false;
-                client.Send(message);
-            }
-            catch (Exception)
+
+				SmtpClient client = new SmtpClient("smtp-mail.outlook.com");
+				client.Port = 587;
+				client.DeliveryMethod = SmtpDeliveryMethod.Network;
+				client.UseDefaultCredentials = false;
+				System.Net.NetworkCredential credential = new System.Net.NetworkCredential("ReservationOfAirline@outlook.com", "Nurlanaztu2003.");
+				client.EnableSsl = true;
+				client.Credentials = credential;
+				MailMessage message = new MailMessage("ReservationOfAirline@outlook.com", contact.Email);
+				message.Subject = "Airline Reservation Support Team";
+				message.Body = "Salam Dəyərli Müştıri Göndərdiyiniz Sualla bağlı Komandamızız Cavabı belədir." + " " + adminAnsver.Messages;
+				message.IsBodyHtml = false;
+				client.Send(message);
+			}
+			catch (Exception)
             {
                 throw;
             }

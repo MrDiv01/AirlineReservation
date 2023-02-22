@@ -1,4 +1,5 @@
-﻿using AirlineReservation.Data;
+﻿using AirlineReservation.Areas.Admin.Controllers;
+using AirlineReservation.Data;
 using AirlineReservation.Models;
 using AirlineReservation.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -16,13 +17,14 @@ namespace AirlineReservation.Controllers
         public IActionResult Index(Search search)
         {
 
-            if (!ModelState.IsValid)
-            {
-                string result = Url.Action("Index", "Home");
 
-                return Redirect(result);
-            }
-            foreach (var a in _applicationDbContext.Flights.ToList())
+			if (!ModelState.IsValid)
+			{
+				string result = Url.Action("Index", "Home");
+
+				return Redirect(result);
+			}
+			foreach (var a in _applicationDbContext.Flights.ToList())
             {
                 DateTime dateTime = a.FlightDay;
                 DateOnly dateOnly = DateOnly.FromDateTime(dateTime);

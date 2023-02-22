@@ -1,9 +1,10 @@
 ﻿@using AirlineReservation.Models;
+@using AirlineReservation.ViewModels;
 @model Search
 @{
-    ViewData["Title"] = "Home Page";
+	ViewData["Title"] = "Home Page";
 }
-<header  id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(../images/img_2.jpg)">
+<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(../images/img_2.jpg)">
 	<div class="overlay"></div>
 	<div class="gtco-container">
 		<div class="row">
@@ -35,7 +36,6 @@
 													<label for="destination">To Witch City</label>
 													<input asp-for="TAirport" class="form-control">
 													<span asp-validation-for="TAirport" class="text-danger"></span>
-
 												</div>
 											</div>
 
@@ -49,7 +49,7 @@
 
 											<div class="row form-group">
 												<div class="col-md-12">
-													<input @*asp-action="index" asp-controller="Destination" *@type="submit" class="btn btn-primary btn-block" value="Submit">
+													<input type="submit" class="btn btn-primary btn-block" value="Submit">
 												</div>
 											</div>
 										</form>
@@ -62,23 +62,25 @@
 					</div>
 				</div>
 
-
 			</div>
 		</div>
 	</div>
 </header>
 
-
-<div class="gtco-cover gtco-cover-sm" style="background-image: url(../images/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
+	
+@foreach(Titile titile in ViewBag.titl)
+{
+<div class="gtco-cover gtco-cover-sm" style="background-image: url(../../uploads/HomeSection2/@titile.Images)" data-stellar-background-ratio="0.5">
 	<div class="overlay"></div>
 	<div class="gtco-container text-center">
 		<div class="display-t">
 			<div class="display-tc">
-				<h1>We have high quality services that you will surely love!</h1>
+				<h1>@titile.Name</h1>
 			</div>
 		</div>
 	</div>
 </div>
+}
 <div id="gtco-subscribe">
 	<div class="gtco-container">
 		<div class="row animate-box">
