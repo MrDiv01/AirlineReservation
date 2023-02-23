@@ -34,12 +34,13 @@ namespace AirlineReservation.Areas.Admin.Controllers
                 client.Port = 587;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
-                System.Net.NetworkCredential credential = new System.Net.NetworkCredential("ReservationOfAirline@outlook.com", "Nurlanaztu2003.");
+                System.Net.NetworkCredential credential = new System.Net.NetworkCredential("memmedovn@outlook.com", "Nurlanaztu2003.");
                 client.EnableSsl = true;
                 client.Credentials = credential;
+               
                 foreach (var useremails in userMails)
                 {
-                    MailMessage message = new MailMessage("ReservationOfAirline@outlook.com", useremails.UserMail);
+                    MailMessage message = new MailMessage("memmedovn@outlook.com", useremails.UserMail);
                     message.Subject = "Airline Reservation Support Team";
                     message.Body = messagess.Mesage;
                     message.IsBodyHtml = false;

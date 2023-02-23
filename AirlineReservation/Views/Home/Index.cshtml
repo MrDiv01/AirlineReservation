@@ -2,109 +2,98 @@
 @using AirlineReservation.ViewModels;
 @model Search
 @{
-	ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home Page";
 }
-<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(../images/img_2.jpg)">
-	<div class="overlay"></div>
-	<div class="gtco-container">
-		<div class="row">
-			<div class="col-md-12 col-md-offset-0 text-left">
-
-
-				<div class="row row-mt-15em">
-					<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
-						<h1>Planing Trip To Anywhere in The World?</h1>
-					</div>
-					<div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
-						<div class="form-wrap">
-							<div class="tab">
-
-								<div class="tab-content">
-									<div class="tab-content-inner active" data-content="signup">
-										<h3>Book Your Trip</h3>
-										<form method="post">
-											<div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
-											<div class="row form-group">
-												<div class="col-md-12">
-													<label for="activities">From Witch City</label>
-													<input asp-for="FAirport" class="form-control">
-													<span asp-validation-for="FAirport" class="text-danger"></span>
-												</div>
-											</div>
-											<div class="row form-group">
-												<div class="col-md-12">
-													<label for="destination">To Witch City</label>
-													<input asp-for="TAirport" class="form-control">
-													<span asp-validation-for="TAirport" class="text-danger"></span>
-												</div>
-											</div>
-
-											<div class="row form-group">
-												<div class="col-md-12">
-													<label for="date-start">Date Travel</label>
-													<input type="date" asp-for="DateTimeAirdate" class="form-control">
-													<span asp-validation-for="DateTimeAirdate" class="text-danger"></span>
-												</div>
-											</div>
-
-											<div class="row form-group">
-												<div class="col-md-12">
-													<input type="submit" class="btn btn-primary btn-block" value="Submit">
-												</div>
-											</div>
-										</form>
-									</div>
-
-
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-</header>
-
-	
-@foreach(Titile titile in ViewBag.titl)
+@foreach (HeaderDec headerDec in ViewBag.HomeDec)
 {
-<div class="gtco-cover gtco-cover-sm" style="background-image: url(../../uploads/HomeSection2/@titile.Images)" data-stellar-background-ratio="0.5">
-	<div class="overlay"></div>
-	<div class="gtco-container text-center">
-		<div class="display-t">
-			<div class="display-tc">
-				<h1>@titile.Name</h1>
-			</div>
-		</div>
-	</div>
-</div>
+    <header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(../../uploads/HomeSection1/@headerDec.Images)">
+        <div class="overlay"></div>
+        <div class="gtco-container">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-0 text-left">
+
+
+                    <div class="row row-mt-15em">
+                        <div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
+                            <h1>@headerDec.Name</h1>
+                        </div>
+                        <div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
+                            <div class="form-wrap">
+                                <div class="tab">
+
+                                    <div class="tab-content">
+                                        <div class="tab-content-inner active" data-content="signup">
+                                            <h3>Book Your Trip</h3>
+                                            <form method="post">
+                                                <div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
+                                                <div class="row form-group">
+                                                    <div class="col-md-12">
+                                                        <label for="activities">From Witch City</label>
+                                                        <input asp-for="FAirport" class="form-control">
+                                                        <span asp-validation-for="FAirport" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row form-group">
+                                                    <div class="col-md-12">
+                                                        <label for="destination">To Witch City</label>
+                                                        <input asp-for="TAirport" class="form-control">
+                                                        <span asp-validation-for="TAirport" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row form-group">
+                                                    <div class="col-md-12">
+                                                        <label for="date-start">Date Travel</label>
+                                                        <input type="date" asp-for="DateTimeAirdate" class="form-control">
+                                                        <span asp-validation-for="DateTimeAirdate" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row form-group">
+                                                    <div class="col-md-12">
+                                                        <input type="submit" class="btn btn-primary btn-block" value="Submit">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+}
+
+
+@foreach (Titile titile in ViewBag.titl)
+{
+    <div class="gtco-cover gtco-cover-sm" style="background-image: url(../../uploads/HomeSection2/@titile.Images)" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="gtco-container text-center">
+            <div class="display-t">
+                <div class="display-tc">
+                    <h1>@titile.Name</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 }
 <div id="gtco-subscribe">
-	<div class="gtco-container">
-		<div class="row animate-box">
-			<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-				<h2>Subscribe</h2>
-				<p>Be the first to know about the new templates.</p>
-			</div>
-		</div>
-		<div class="row animate-box">
-			<div class="col-md-8 col-md-offset-2">
-				<form class="form-inline">
-					<div class="col-md-6 col-sm-6">
-						<div class="form-group">
-							<label for="email" class="sr-only">Email</label>
-							<input type="email" class="form-control" id="email" placeholder="Your Email">
-						</div>
-					</div>
-					<div class="col-md-6 col-sm-6">
-						<button type="submit" class="btn btn-default btn-block">Subscribe</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+    <div style="display:flex;justify-content:center;">
+        <h1 style="color:#fff">
+            Şikayət və Müraciət Üçün
+        </h1>
+    </div>
+
+    <div class="gtco-container" style="display:flex;justify-content:center">
+        <a asp-action="Index" asp-controller="Contact"><button type="button" class="btn btn-primary"> Sapport </button></a>
+    </div>
 </div>
 
 

@@ -51,10 +51,10 @@ namespace AirlineReservation.Controllers
                 client.Port = 587;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
-                System.Net.NetworkCredential credential = new System.Net.NetworkCredential("ReservationOfAirline@outlook.com", "Nurlanaztu2003.");
+                System.Net.NetworkCredential credential = new System.Net.NetworkCredential("memmedovn@outlook.com", "Nurlanaztu2003.");
                 client.EnableSsl = true;
                 client.Credentials = credential;
-                MailMessage message = new MailMessage("ReservationOfAirline@outlook.com", userTicket.Email);
+                MailMessage message = new MailMessage("memmedovn@outlook.com", userTicket.Email);
                 message.Subject = "Airline Reservation";
                 message.Body = "Hi " + userTicket.Name + ". " + " Have a nice trip " + "From " + fligh.FromAirport + " To " + fligh.ToAirport + " At " + fligh.DepartureTime;
                 message.IsBodyHtml = false;
@@ -65,13 +65,11 @@ namespace AirlineReservation.Controllers
                     UserMail = userTicket.Email,
                     UserName = userTicket.Name,
                 };
-                foreach (UserMails usermail in _applicationDbContext.UserMails.ToList())
+               UserMails mails =  _applicationDbContext.UserMails.FirstOrDefault(x => x.UserMail == userTicket.Email);
+                if(mails == null)
                 {
-                    if (userTicket.Email != usermail.UserMail)
-                    {
-                        _applicationDbContext.UserMails.Add(userMails);
-                        _applicationDbContext.SaveChanges();
-                    }
+                    _applicationDbContext.UserMails.Add(userMails);
+                    _applicationDbContext.SaveChanges();
                 }
                 _applicationDbContext.UserTickets.Add(userTicket);
                 _applicationDbContext.SaveChanges();

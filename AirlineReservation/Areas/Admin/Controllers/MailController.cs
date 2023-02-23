@@ -39,10 +39,10 @@ namespace AirlineReservation.Areas.Admin.Controllers
 				client.Port = 587;
 				client.DeliveryMethod = SmtpDeliveryMethod.Network;
 				client.UseDefaultCredentials = false;
-				System.Net.NetworkCredential credential = new System.Net.NetworkCredential("ReservationOfAirline@outlook.com", "Nurlanaztu2003.");
+				System.Net.NetworkCredential credential = new System.Net.NetworkCredential("memmedovn@outlook.com","Nurlanaztu2003.");
 				client.EnableSsl = true;
 				client.Credentials = credential;
-				MailMessage message = new MailMessage("ReservationOfAirline@outlook.com", contact.Email);
+				MailMessage message = new MailMessage("memmedovn@outlook.com", contact.Email);
 				message.Subject = "Airline Reservation Support Team";
 				message.Body = "Salam Dəyərli Müştıri Göndərdiyiniz Sualla bağlı Komandamızız Cavabı belədir." + " " + adminAnsver.Messages;
 				message.IsBodyHtml = false;

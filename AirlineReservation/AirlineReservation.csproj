@@ -92,6 +92,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\uploads\HomeSection2\" />
+    <Folder Include="wwwroot\uploads\HomeSection1\" />
   </ItemGroup>
 
 </Project>

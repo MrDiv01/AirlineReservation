@@ -14,7 +14,7 @@ namespace AirlineReservation.Data
 		public DbSet<Titile> Titiles { get; set; }
         public DbSet<Messages> Messages { get; set; }
         public DbSet<UserMails> UserMails { get; set; }
-
+		public DbSet<HeaderDec> HeaderDecs { get; set; }
 
         //     protected override void OnModelCreating(ModelBuilder modelBuilder)
         //     {

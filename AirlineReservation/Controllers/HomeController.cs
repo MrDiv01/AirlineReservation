@@ -28,6 +28,7 @@ namespace AirlineReservation.Controllers
 				}
 			}
 			ViewBag.titl = _applicationDbContext.Titiles.ToList();
+			ViewBag.HomeDec = _applicationDbContext.HeaderDecs.ToList();
 			return View();
 		}
 
@@ -35,7 +36,9 @@ namespace AirlineReservation.Controllers
 		public IActionResult Index(Search search)
 		{
 			ViewBag.titl = _applicationDbContext.Titiles.ToList();
-			DateTime dateTime = DateTime.Now;
+            ViewBag.HomeDec = _applicationDbContext.HeaderDecs.ToList();
+
+            DateTime dateTime = DateTime.Now;
 			DateOnly dateOnly = DateOnly.FromDateTime(dateTime);
 			DateTime dateTime1 = search.DateTimeAirdate;
 			DateOnly dateOnly1 = DateOnly.FromDateTime(dateTime1);
