@@ -1,5 +1,6 @@
-﻿@using AirlineReservation.Models;
-@model List<UserTicket>
+﻿@using AirlineReservation.Helpers;
+@using AirlineReservation.Models;
+@model PaginatedList<UserTicket>
 @{
     ViewData["Title"] = "Index";
 }
@@ -29,4 +30,28 @@
             }
         </tbody>
     </table>
+</div>
+<div>
+    <form method="get">
+        <nav aria-label="...">
+            <ul class="pagination">
+                @if (Model.HavePervious)
+                {
+                    <li class="page-item">
+                        <a asp-action="Index" asp-controller="Users" asp-route-page="@(Model.Page-1)" class="page-link">Previous</a>
+                    </li>
+                }
+                @for (int i = 1; i <= Model.TotalPage; i++)
+                {
+                    <li class="page-item @(Model.Page == i ? "active":"")"><a class="page-link" asp-action="Index" asp-controller="Users" asp-route-page="@i">@i</a></li>
+                }
+                @if (Model.HasNext)
+                {
+                    <li class="page-item">
+                        <a asp-action="Index" asp-controller="Users" asp-route-page="@(Model.Page+1)" class="page-link">Next</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </form>
 </div>

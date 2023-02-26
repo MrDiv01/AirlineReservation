@@ -17,8 +17,14 @@ namespace AirlineReservation.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddMessages(Contact contact)
+        public IActionResult Index(Contact contact)
         {
+            ViewBag.Adress = _applicationDbContext.Adresss.ToList();
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "Bos Qala Bilmez");
+                return View();
+            }
             contact.DateTime = DateTime.Now;
             _applicationDbContext.Contacts.Add(contact);
             _applicationDbContext.SaveChanges();

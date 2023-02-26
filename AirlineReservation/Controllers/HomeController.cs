@@ -21,7 +21,7 @@ namespace AirlineReservation.Controllers
 			List<UserTicket> userTickets = _applicationDbContext.UserTickets.ToList();
 			foreach (Flight flight in flights)
 			{
-				if (flight.DepartureTime < DateTime.Now || flight.Count == 0)
+				if (flight.DepartureTime < DateTime.Now)
 				{
 					_applicationDbContext.Flights.Remove(flight);
 					_applicationDbContext.SaveChanges();

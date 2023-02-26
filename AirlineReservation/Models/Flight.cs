@@ -7,9 +7,9 @@ namespace AirlineReservation.Models
     {
         public int Id { get; set; }
         public string FromAirport { get; set; }
-        public string TAirportName { get; set; }
-        public string FAirportName { get; set; }
         public string ToAirport { get; set; }
+        public string FAirportName { get; set; }
+        public string TAirportName { get; set; }
         public DateTime DepartureTime { get; set; }
         public DateTime AriveTime { get; set; }
         public DateTime FlightDay { get; set; }

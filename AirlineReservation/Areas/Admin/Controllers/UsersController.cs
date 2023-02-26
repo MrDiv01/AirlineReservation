@@ -1,4 +1,5 @@
 ﻿using AirlineReservation.Data;
+using AirlineReservation.Helpers;
 using AirlineReservation.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,10 +14,12 @@ namespace AirlineReservation.Areas.Admin.Controllers
         {
             _applicationDbContext = applicationDbContext;
         }
-        public IActionResult Index()
+        public IActionResult Index(int page =1)
         {
-          List<UserTicket> userTicket = _applicationDbContext.UserTickets.ToList();
-            return View(userTicket);
+            var query = _applicationDbContext.UserTickets.AsQueryable();
+            //PaginatedList<UserTicket> PagenateduserTickets =new PaginatedList<UserTicket>(query.Skip((page-1)*10).ToList(),query.Count(),page,10);
+            var PagenateduserTickets = PaginatedList<UserTicket>.Create(query, 8, page);
+            return View(PagenateduserTickets);
         }
     }
 }
