@@ -29,14 +29,20 @@
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="activities">From Witch City</label>
-                                                        <input asp-for="FAirport" class="form-control">
+                                                        <div style="display:flex">
+                                                            <input id="transcript" asp-for="FAirport" class="form-control">
+                                                            <button type="button" id="startBtn"><i class="fa-solid fa-microphone"></i></button>
+                                                        </div>
                                                         <span asp-validation-for="FAirport" class="text-danger"></span>
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
                                                         <label for="destination">To Witch City</label>
-                                                        <input asp-for="TAirport" class="form-control">
+                                                        <div style="display:flex">
+                                                            <input id="transcript1" asp-for="TAirport" class="form-control">
+                                                            <button type="button" id="startBtn1"><i class="fa-solid fa-microphone"></i></button>
+                                                        </div>
                                                         <span asp-validation-for="TAirport" class="text-danger"></span>
                                                     </div>
                                                 </div>
@@ -97,3 +103,73 @@
 </div>
 
 
+<script>
+    // get the HTML element for displaying the transcript
+    const transcriptElement = document.getElementById("transcript");
+
+    // check if browser supports the Web Speech API
+    if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+        // create a new speech recognition object
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+
+        // event fired when speech recognition is started
+        recognition.onstart = function () {
+            console.log("Speech recognition started");
+        };
+
+        // event fired when speech is recognized
+        recognition.onresult = function (event) {
+            const transcript = event.results[0][0].transcript;
+            transcriptElement.value = transcript;
+        };
+
+        // event fired when speech recognition is ended
+        recognition.onend = function () {
+            console.log("Speech recognition ended");
+        };
+
+        // add click event listener to start button
+        const startBtn = document.getElementById("startBtn");
+        startBtn.addEventListener("click", function () {
+            recognition.start();
+        });
+
+    } else {
+        console.log("Speech recognition not supported by this browser");
+    }
+
+
+    // get the HTML element for displaying the transcript
+    const transcriptElement1 = document.getElementById("transcript1");
+
+    // check if browser supports the Web Speech API
+    if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+        // create a new speech recognition object
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+
+        // event fired when speech recognition is started
+        recognition.onstart = function () {
+            console.log("Speech recognition started");
+        };
+
+        // event fired when speech is recognized
+        recognition.onresult = function (event) {
+            const transcript2 = event.results[0][0].transcript;
+            transcriptElement1.value = transcript2;
+        };
+
+        // event fired when speech recognition is ended
+        recognition.onend = function () {
+            console.log("Speech recognition ended");
+        };
+
+        // add click event listener to start button
+        const startBtn = document.getElementById("startBtn1");
+        startBtn.addEventListener("click", function () {
+            recognition.start();
+        });
+
+    } else {
+        console.log("Speech recognition not supported by this browser");
+    }
+</script>

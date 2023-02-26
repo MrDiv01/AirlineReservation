@@ -31,15 +31,15 @@ namespace AirlineReservation.Controllers
                 DateTime dateTime1 = search.DateTimeAirdate;
                 DateOnly dateOnly1 = DateOnly.FromDateTime(dateTime1);
 
-                if (search.TAirport == a.ToAirport && 
-                                            search.FAirport == a.FromAirport && 
+                if (search.TAirport.ToLower() == a.ToAirport.ToLower() && 
+                                            search.FAirport.ToLower() == a.FromAirport.ToLower() && 
                                             dateOnly == dateOnly1 && a.Count > 0 &&
                                             0 < DateTime.Compare(a.DepartureTime, DateTime.Now))
                 {
                     DestinationViewModel destinationViewModel = new DestinationViewModel()
                     {
-                        flightsı = _applicationDbContext.Flights.Where(x => x.FromAirport == search.FAirport && 
-                                                        x.ToAirport == search.TAirport && 
+                        flightsı = _applicationDbContext.Flights.Where(x => x.FromAirport.ToLower() == search.FAirport.ToLower() && 
+                                                        x.ToAirport.ToLower() == search.TAirport.ToLower() && 
                                                         x.FlightDay == search.DateTimeAirdate && 
                                                         0 < DateTime.Compare(x.DepartureTime, DateTime.Now)).ToList(),
                     };

@@ -32,15 +32,15 @@ namespace AirlineReservation.Controllers
                 return View();
             }
             Flight flight = _applicationDbContext.Flights.FirstOrDefault(c=>c.DepartureTime == returnTicketDto.DepartureTime && 
-                                                            c.FAirportName == returnTicketDto.FAirportName &&
-                                                            c.TAirportName == returnTicketDto.TAirportName &&
-                                                            c.FromAirport == returnTicketDto.FromAirport &&
-                                                            c.ToAirport == returnTicketDto.ToAirport);
+                                                            c.FAirportName.ToLower() == returnTicketDto.FAirportName.ToLower() &&
+                                                            c.TAirportName.ToLower() == returnTicketDto.TAirportName.ToLower() &&
+                                                            c.FromAirport.ToLower() == returnTicketDto.FromAirport.ToLower() &&
+                                                            c.ToAirport.ToLower() == returnTicketDto.ToAirport.ToLower());
             if (flight == null)
             {
                 return RedirectToAction("Errors", "Error");
             }
-            UserTicket userTicket = _applicationDbContext.UserTickets.FirstOrDefault(c=>c.Fincode==returnTicketDto.FinCode &&
+            UserTicket userTicket = _applicationDbContext.UserTickets.FirstOrDefault(c=>c.Fincode.ToLower() == returnTicketDto.FinCode.ToLower() &&
                                                                                                         c.FlightId == flight.Id);
             if(userTicket == null)
             {

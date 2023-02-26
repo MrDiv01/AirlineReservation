@@ -65,7 +65,7 @@ namespace AirlineReservation.Controllers
                     UserMail = userTicket.Email,
                     UserName = userTicket.Name,
                 };
-               UserMails mails =  _applicationDbContext.UserMails.FirstOrDefault(x => x.UserMail == userTicket.Email);
+               UserMails mails =  _applicationDbContext.UserMails.FirstOrDefault(x => x.UserMail.ToLower() == userTicket.Email.ToLower());
                 if(mails == null)
                 {
                     _applicationDbContext.UserMails.Add(userMails);
