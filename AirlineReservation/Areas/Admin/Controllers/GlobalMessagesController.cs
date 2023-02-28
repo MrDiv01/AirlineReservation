@@ -1,11 +1,14 @@
 ﻿using AirlineReservation.Data;
 using AirlineReservation.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mail;
 
 namespace AirlineReservation.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
+
     public class GlobalMessagesController : Controller
     {
         private readonly ApplicationDbContext _applicationDbContext;
@@ -59,7 +62,9 @@ namespace AirlineReservation.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Delete(int Id)
         {
-            Messages messages = _applicationDbContext.Messages.Find(Id);
+            Messages messages = _applicationDbContext.Messages.FirstOrDefault(c=>c.Id == Id);
+            if(messages == null)
+                        return RedirectToAction("Errors","Error");
             _applicationDbContext.Messages.Remove(messages);
             _applicationDbContext.SaveChanges();
             return RedirectToAction("Index", "GlobalMessages");

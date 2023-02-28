@@ -1,9 +1,10 @@
 ﻿using AirlineReservation.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace AirlineReservation.Data
 {
-	public class ApplicationDbContext : DbContext
+	public class ApplicationDbContext : IdentityDbContext
 	{
 		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 		public DbSet<Flight> Flights { get; set; }
@@ -15,6 +16,7 @@ namespace AirlineReservation.Data
         public DbSet<Messages> Messages { get; set; }
         public DbSet<UserMails> UserMails { get; set; }
 		public DbSet<HeaderDec> HeaderDecs { get; set; }
+		public DbSet<AppUser> AppUsers { get; set; }
 
         //     protected override void OnModelCreating(ModelBuilder modelBuilder)
         //     {

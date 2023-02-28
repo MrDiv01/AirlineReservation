@@ -1,11 +1,14 @@
 ﻿using AirlineReservation.Data;
 using AirlineReservation.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mail;
 
 namespace AirlineReservation.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
+
     public class MailController : Controller
     {
         private readonly ApplicationDbContext _aaplicationDbContext;

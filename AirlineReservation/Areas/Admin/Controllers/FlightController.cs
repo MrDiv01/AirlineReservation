@@ -1,10 +1,13 @@
 ﻿using AirlineReservation.Data;
 using Microsoft.AspNetCore.Mvc;
 using AirlineReservation.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AirlineReservation.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
+
     public class FlightController : Controller
     {
         private readonly ApplicationDbContext _applicationDbContext;
