@@ -55,10 +55,10 @@ namespace AirlineReservation.Controllers
                 client.Port = 587;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
-                System.Net.NetworkCredential credential = new System.Net.NetworkCredential("memmedovn@outlook.com", "Nurlanaztu2003.");
+                System.Net.NetworkCredential credential = new System.Net.NetworkCredential("flightrezervation@outlook.com", "Nurlanaztu2003.");
                 client.EnableSsl = true;
                 client.Credentials = credential;
-                MailMessage message = new MailMessage("memmedovn@outlook.com", userTicket.Email);
+                MailMessage message = new MailMessage("flightrezervation@outlook.com", userTicket.Email);
                 message.Subject = "Airline Reservation";
                 message.Body = "Hi " + userTicket.Name + " " +"Return The Ticket";
                 message.IsBodyHtml = false;
