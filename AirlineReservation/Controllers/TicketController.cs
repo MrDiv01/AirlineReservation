@@ -1,6 +1,7 @@
 ﻿using AirlineReservation.Data;
 using AirlineReservation.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using System.Net.Mail;
 
@@ -13,8 +14,10 @@ namespace AirlineReservation.Controllers
         {
             _applicationDbContext = applicationDbContext;
         }
+        static int fnum = 0;
         public IActionResult Index(int id)
         {
+            fnum = id;
             ViewBag.Id = id;
 
             return View();
@@ -33,7 +36,12 @@ namespace AirlineReservation.Controllers
         [HttpPost]
         public IActionResult Rezerv(UserTicket userTicket)
         {
-            if (!ModelState.IsValid)
+            UserTicket userTicket1 = _applicationDbContext.UserTickets.Find(fnum);
+            if(userTicket1.Fincode == userTicket.Fincode)
+            {
+                return RedirectToAction("Error","Errors");
+            }
+            if (!ModelState.IsValid )
             {
                 string result = Url.Action("Index", "Ticket");
 

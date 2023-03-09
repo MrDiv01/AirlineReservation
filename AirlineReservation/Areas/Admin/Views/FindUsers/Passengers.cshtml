@@ -1,60 +1,34 @@
-﻿@using AirlineReservation.Helpers;
-@using AirlineReservation.Models;
-@model PaginatedList<UserTicket>
+﻿@using AirlineReservation.Models;
+@model List<UserTicket>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Passengers";
 }
+
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
 <div class="table-responsive">
     <table id="myTable" class="table table-bordered table-hover table-condensed mb-4">
         <thead>
             <tr>
+                <th>FinCode</th>
                 <th>Name</th>
                 <th>SureName</th>
                 <th>Father Name</th>
-                <th>FinCode</th>
                 <th>Email</th>
-                <th>Flight</th>
             </tr>
         </thead>
         <tbody>
             @foreach (UserTicket userTicket in Model)
             {
                 <tr>
+                    <td>@userTicket.Fincode</td>
                     <td>@userTicket.Name</td>
                     <td>@userTicket.SureName</td>
                     <td>@userTicket.FatherName</td>
-                    <td>@userTicket.Fincode</td>
                     <td>@userTicket.Email</td>
-                    <td>@userTicket.FlightId</td>
                 </tr>
             }
         </tbody>
     </table>
-</div>
-<div>
-    <form method="get">
-        <nav aria-label="...">
-            <ul class="pagination">
-                @if (Model.HavePervious)
-                {
-                    <li class="page-item">
-                        <a asp-action="Index" asp-controller="Users" asp-route-page="@(Model.Page-1)" class="page-link">Previous</a>
-                    </li>
-                }
-                @for (int i = 1; i <= Model.TotalPage; i++)
-                {
-                    <li class="page-item @(Model.Page == i ? "active":"")"><a class="page-link" asp-action="Index" asp-controller="Users" asp-route-page="@i">@i</a></li>
-                }
-                @if (Model.HasNext)
-                {
-                    <li class="page-item">
-                        <a asp-action="Index" asp-controller="Users" asp-route-page="@(Model.Page+1)" class="page-link">Next</a>
-                    </li>
-                }
-            </ul>
-        </nav>
-    </form>
 </div>
 <script>
     function myFunction() {
