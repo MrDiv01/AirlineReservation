@@ -11,5 +11,7 @@ namespace AirlineReservation.Models
         public string Fincode { get; set; }
         public string Email { get; set; }
         public int? FlightId { get; set; }
+        public Flight Flight { get; set; }
+
     }
 }

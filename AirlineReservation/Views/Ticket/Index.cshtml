@@ -20,7 +20,7 @@
         </div>
     </div>
 </header>
-<form method="post" asp-action="Rezerv">
+<form method="post">
     <div class="container">
         <div class="form-group">
             <label asp-for="Name">Name</label>
@@ -49,12 +49,9 @@
             <label asp-for="Email">Email address</label>
             <input type="email" asp-for="Email" class="form-control">
             <span asp-validation-for="Email" class="text-danger"></span>
-
         </div>
-        <input hidden asp-for="FlightId" value="@ViewBag.Id" />
         <div style="display: flex;justify-content: center;">
             <button type="submit" class="btn btn-primary">Rezerv Et</button>
         </div>
     </div>
 </form>
-

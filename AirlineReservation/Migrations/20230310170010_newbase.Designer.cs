@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AirlineReservation.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230228130757_UserLogin")]
-    partial class UserLogin
+    [Migration("20230310170010_newbase")]
+    partial class newbase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -252,6 +252,8 @@ namespace AirlineReservation.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("FlightId");
+
                     b.ToTable("UserTickets");
                 });
 
@@ -468,6 +470,15 @@ namespace AirlineReservation.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("AppUser");
+                });
+
+            modelBuilder.Entity("AirlineReservation.Models.UserTicket", b =>
+                {
+                    b.HasOne("AirlineReservation.Models.Flight", "Flight")
+                        .WithMany()
+                        .HasForeignKey("FlightId");
+
+                    b.Navigation("Flight");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

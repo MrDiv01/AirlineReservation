@@ -8,5 +8,9 @@ namespace AirlineReservation.Controllers
 		{
 			return View();
 		}
+		public IActionResult SearchUser()
+		{
+			return View();
+		}
 	}
 }

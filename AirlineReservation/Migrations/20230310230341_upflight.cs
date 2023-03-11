@@ -4,13 +4,13 @@
 
 namespace AirlineReservation.Migrations
 {
-    public partial class updateTitilTAble : Migration
+    public partial class upflight : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
                 name: "Images",
-                table: "Titiles",
+                table: "Flights",
                 type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
@@ -21,7 +21,7 @@ namespace AirlineReservation.Migrations
         {
             migrationBuilder.AlterColumn<string>(
                 name: "Images",
-                table: "Titiles",
+                table: "Flights",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "",

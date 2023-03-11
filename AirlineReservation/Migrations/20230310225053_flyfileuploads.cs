@@ -4,22 +4,23 @@
 
 namespace AirlineReservation.Migrations
 {
-    public partial class UpdateUserTicket : Migration
+    public partial class flyfileuploads : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "FlightId",
-                table: "UserTickets",
-                type: "int",
-                nullable: true);
+            migrationBuilder.AddColumn<string>(
+                name: "Images",
+                table: "Flights",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "FlightId",
-                table: "UserTickets");
+                name: "Images",
+                table: "Flights");
         }
     }
 }

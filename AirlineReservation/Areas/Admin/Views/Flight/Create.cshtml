@@ -11,7 +11,7 @@
 </head>
 <div style="margin-bottom:20px" class="container">
 
-    <form method="post" asp-action="Create">
+    <form method="post" asp-action="Create" enctype="multipart/form-data">
 
         <div style="display:flex;flex-direction:column;">
             <label asp-for="FAirportName">From City Name</label>
@@ -48,6 +48,12 @@
             <label asp-for="Count">Email Count</label>
             <input asp-for="Count" type="number" class="form-control" placeholder="Enter count">
         </div>
+
+        <div class="form-group">
+            <label asp-for="ImageFile">Images</label>
+            <input asp-for="ImageFile" class="form-control" placeholder="Image">
+        </div>
+        <span asp-validation-for="ImageFile" class="text-danger"></span>
         <div style="display:flex;justify-content:center">
         <button type="submit" class="btn btn-primary">Submit</button>
         </div>

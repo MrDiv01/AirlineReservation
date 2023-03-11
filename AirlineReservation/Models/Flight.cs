@@ -14,6 +14,9 @@ namespace AirlineReservation.Models
         public DateTime AriveTime { get; set; }
         public DateTime FlightDay { get; set; }
         public int Count { get; set; }
+        public string? Images { get;set; }
+        [NotMapped]
+        public IFormFile? ImageFile { get; set; }
         //public static string TicketCode { get; set; }
         //public string GetCode()
         //{
