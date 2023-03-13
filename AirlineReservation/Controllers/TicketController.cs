@@ -14,20 +14,20 @@ namespace AirlineReservation.Controllers
         {
             _applicationDbContext = applicationDbContext;
         }
-        static int Id = 0;
+        static int _flightId = 0;
         [HttpGet]
-        public IActionResult Index(int id)
+        public IActionResult Index(int flightId)
         {
-            Id = id;
+            _flightId = flightId;
             return View();
         }
         [HttpPost]
         public IActionResult Index(UserTicket userTicket)
         {
-            userTicket.FlightId = Id;
+            userTicket.FlightId = _flightId;
             if (userTicket.Name == null || userTicket.SureName == null || userTicket.FatherName == null || userTicket.Fincode == null || userTicket.Email == null)
             {
-                 ModelState.AddModelError("","ss");
+                ModelState.AddModelError("", "ss");
                 return View();
             }
             List<UserTicket> userTickets = _applicationDbContext.UserTickets.Where(x => x.Fincode == userTicket.Fincode && x.FlightId == userTicket.FlightId).ToList();
@@ -64,13 +64,13 @@ namespace AirlineReservation.Controllers
                     _applicationDbContext.UserMails.Add(userMails);
                     _applicationDbContext.SaveChanges();
                 }
-                _applicationDbContext.UserTickets.Add(userTicket);
-                _applicationDbContext.SaveChanges();
             }
             catch (Exception)
             {
                 throw;
             }
+            _applicationDbContext.UserTickets.Add(userTicket);
+            _applicationDbContext.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
 

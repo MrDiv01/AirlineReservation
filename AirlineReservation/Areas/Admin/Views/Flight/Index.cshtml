@@ -9,7 +9,7 @@
     <table class="table table-bordered table-hover table-condensed mb-4">
         <thead>
             <tr>
-                <th>Img</th>
+                <th>TripCode</th>
                 <th>From City</th>
                 <th>From Airport Name</th>
                 <th>ToCity</th>
@@ -23,7 +23,7 @@
             @foreach (Flight flight in Model)
             {
                 <tr>
-                    <td><img src="~/uploads/FlightImg/@flight.Images" style="width:100px;height:100px"></td>
+                    <td>@flight.TripCode</td>
                     <td>@flight.FromAirport</td>
                     <td>@flight.FAirportName</td>
                     <td>@flight.ToAirport</td>

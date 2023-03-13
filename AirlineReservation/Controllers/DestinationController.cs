@@ -16,9 +16,8 @@ namespace AirlineReservation.Controllers
         }
         public IActionResult Index(Search search)
         {
-            ViewBag.Flight = _applicationDbContext.Flights.Where(x=>x.FromAirport == search.FAirport &&
-                                                                  x.ToAirport == search.TAirport &&
-                                                                  x.DepartureTime.Date == search.DateTimeAirdate).ToList();
+            ViewBag.TicketImg = _applicationDbContext.TicketImage.Where(x => x.FAirportName == search.FAirport &&
+                                                                  x.TAirportName == search.TAirport).ToList();
 			if (!ModelState.IsValid)
 			{
 				string result = Url.Action("Index", "Home");
