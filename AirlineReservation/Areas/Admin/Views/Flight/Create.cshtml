@@ -27,7 +27,7 @@
                 <option selected>Open this select menu</option>
             </select>
             <div class="form-group">
-                <label asp-for="TAirportName">To Airport Name</label>
+                <label asp-for="TAirportName">Departure Airport Name</label>
                 <input asp-for="TAirportName" class="form-control" placeholder="From Airport Name">
             </div>
         </div>
@@ -44,19 +44,13 @@
             <input asp-for="FlightDay" type="date" class="form-control" placeholder="Enter FlightDay">
         </div>
         <div class="form-group">
-            <label asp-for="TripCode">Trip Code</label>
+            <label asp-for="TripCode">Flight Code</label>
             <input asp-for="TripCode" class="form-control" placeholder="Enter TripCode">
         </div>
         <div class="form-group">
-            <label asp-for="Count">Email Count</label>
+            <label asp-for="Count">Passenger Count</label>
             <input asp-for="Count" type="number" class="form-control" placeholder="Enter count">
         </div>
-
-        <div class="form-group">
-            <label asp-for="ImageFile">Images</label>
-            <input asp-for="ImageFile" class="form-control" placeholder="Image">
-        </div>
-        <span asp-validation-for="ImageFile" class="text-danger"></span>
         <div style="display:flex;justify-content:center">
         <button type="submit" class="btn btn-primary">Submit</button>
         </div>

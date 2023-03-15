@@ -49,8 +49,18 @@ namespace AirlineReservation.Controllers
                 client.Credentials = credential;
                 MailMessage message = new MailMessage("flightrezervation@outlook.com", userTicket.Email);
                 message.Subject = "Airline Reservation";
-                message.Body = "Hi " + userTicket.Name + ". " + " Have a nice trip " + "From " + fligh.FromAirport + " To " + fligh.ToAirport + " At " + fligh.DepartureTime;
-                message.IsBodyHtml = false;
+                message.Body = $@"<div class=""card component-card_9"">
+            <div class=""card-body"">
+                <p class=""meta-date"">{ fligh.DepartureTime}</p>
+
+                <h5 class=""card-title"">{fligh.FromAirport}-{fligh.ToAirport}</h5>
+                <p class=""card-text"">Have a nice trip.Thanks for choosing us.Flight Cod:{fligh.TripCode}</p>
+            </div>
+        </div>";
+                //message.Body = "Hi " + userTicket.Name + ". " + " Have a nice trip " + "From " + fligh.FromAirport + " To " + fligh.ToAirport + " At " + fligh.DepartureTime;
+                //message.IsBodyHtml = false;
+                message.IsBodyHtml = true;
+
                 client.Send(message);
                 fligh.Count = fligh.Count - 1;
                 UserMails userMails = new UserMails()

@@ -13,57 +13,61 @@
 </head>
 <body style="background-color:darkslategrey">
 
-        <div style="margin-top:70px" class="container">
+    <div style="margin-top:70px" class="container">
 
         <a asp-action="Index" asp-controller="Home"> <button type="button" class="btn btn-primary">Go To Home </button></a>
 
-            <form method="post" asp-action="index">
+        <form method="post" asp-action="index">
 
 
-                <div style="display:flex;flex-direction:column;">
-                    <label style="color:white" asp-for="FAirportName">From City Name</label>
-                    <select style="margin-bottom:20px" asp-for="FromAirport" id="select1" class="form-select" aria-label="Default select example">
-                        <option selected>Select City</option>
-                    </select>
-                    <span asp-validation-for="FromAirport" class="text-danger"></span>
+            <div style="display:flex;flex-direction:column;">
+                <label style="color:white" asp-for="FAirportName">From City Name</label>
+                <select style="margin-bottom:20px" asp-for="FromAirport" id="select1" class="form-select" aria-label="Default select example">
+                    <option selected>Select City</option>
+                </select>
+                <span asp-validation-for="FromAirport" class="text-danger"></span>
 
-                    <div class="form-group">
+                <div class="form-group">
                     <label style="color:white" asp-for="FAirportName">From Airport Name</label>
-                        <input asp-for="FAirportName" class="form-control" placeholder="From Airport Name">
-                    </div>
-                    <span asp-validation-for="FAirportName" class="text-danger"></span>
+                    <input asp-for="FAirportName" class="form-control" placeholder="From Airport Name">
+                </div>
+                <span asp-validation-for="FAirportName" class="text-danger"></span>
 
                 <label style="color:white" asp-for="TAirportName">To City Name</label>
-                    <select asp-for="ToAirport" id="select2" class="form-select" aria -label="Default select example">
+                <select asp-for="ToAirport" id="select2" class="form-select" aria -label="Default select example">
                     <option selected>Select City</option>
 
-                    </select>
-                    <span asp-validation-for="ToAirport" class="text-danger"></span>
+                </select>
+                <span asp-validation-for="ToAirport" class="text-danger"></span>
 
-                    <div class="form-group">
+                <div class="form-group">
                     <label style="color:white" asp-for="TAirportName">To Airport Name</label>
-                        <input asp-for="TAirportName" class="form-control" placeholder="From Airport Name">
-                    </div>
-                    <span asp-validation-for="TAirportName" class="text-danger"></span>
-
+                    <input asp-for="TAirportName" class="form-control" placeholder="From Airport Name">
                 </div>
-                <div class="form-group">
+                <span asp-validation-for="TAirportName" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
                 <label style="color:white" asp-for="DepartureTime">Departure Time</label>
-                    <input asp-for="DepartureTime" type="datetime-local" class="form-control" placeholder="Enter DepartureTime">
-                </div>
-                <span asp-validation-for="DepartureTime" class="text-danger"></span>
+                <input asp-for="DepartureTime" type="datetime-local" class="form-control" placeholder="Enter DepartureTime">
+            </div>
+            <span asp-validation-for="DepartureTime" class="text-danger"></span>
 
-                <div class="form-group">
-                <label style="color:white" asp-for="FinCode">Email FinCode</label>
-                    <input asp-for="FinCode" class="form-control" placeholder="Enter FinCode">
-                </div>
-                <span asp-validation-for="FinCode" class="text-danger"></span>
+            <div class="form-group">
+                <label style="color:white" asp-for="FinCode">Fin Code or Passport Code</label>
+                <input asp-for="FinCode" class="form-control" placeholder="Enter FinCode">
+            </div>
+            <div class="form-group">
+                <label style="color:white" asp-for="TripCode">Flight Code</label>
+                <input asp-for="TripCode" class="form-control" placeholder="Enter FlightCode">
+            </div>
+            <span asp-validation-for="FinCode" class="text-danger"></span>
 
-                <div style="display:flex;justify-content:center">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
-        </div>
+            <div style="display:flex;justify-content:center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
 </body>
 <script>
     const cityName = 'Berlin';
