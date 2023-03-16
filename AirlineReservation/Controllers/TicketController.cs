@@ -44,10 +44,10 @@ namespace AirlineReservation.Controllers
                 client.Port = 587;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
-                System.Net.NetworkCredential credential = new System.Net.NetworkCredential("flightrezervation@outlook.com", "Nurlanaztu2003.");
+                System.Net.NetworkCredential credential = new System.Net.NetworkCredential("bookingflightticket@outlook.com", "Nurlanaztu2003.");
                 client.EnableSsl = true;
                 client.Credentials = credential;
-                MailMessage message = new MailMessage("flightrezervation@outlook.com", userTicket.Email);
+                MailMessage message = new MailMessage("bookingflightticket@outlook.com", userTicket.Email);
                 message.Subject = "Airline Reservation";
                 message.Body = $@"<div class=""card component-card_9"">
             <div class=""card-body"">
@@ -57,9 +57,9 @@ namespace AirlineReservation.Controllers
                 <p class=""card-text"">Have a nice trip.Thanks for choosing us.Flight Cod:{fligh.TripCode}</p>
             </div>
         </div>";
+                message.IsBodyHtml = true;
                 //message.Body = "Hi " + userTicket.Name + ". " + " Have a nice trip " + "From " + fligh.FromAirport + " To " + fligh.ToAirport + " At " + fligh.DepartureTime;
                 //message.IsBodyHtml = false;
-                message.IsBodyHtml = true;
 
                 client.Send(message);
                 fligh.Count = fligh.Count - 1;

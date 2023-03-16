@@ -50,25 +50,25 @@ namespace AirlineReservation.Controllers
             _applicationDbContext.UserTickets.Remove(userTicket);
             flight.Count++;
             _applicationDbContext.SaveChanges();
-            //try
-            //{
-            //    SmtpClient client = new SmtpClient("smtp-mail.outlook.com");
-            //    client.Port = 587;
-            //    client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            //    client.UseDefaultCredentials = false;
-            //    System.Net.NetworkCredential credential = new System.Net.NetworkCredential("flightrezervation@outlook.com", "Nurlanaztu2003.");
-            //    client.EnableSsl = true;
-            //    client.Credentials = credential;
-            //    MailMessage message = new MailMessage("flightrezervation@outlook.com", userTicket.Email);
-            //    message.Subject = "Airline Reservation";
-            //    message.Body = "Hi " + userTicket.Name + " " +"Return The Ticket";
-            //    message.IsBodyHtml = false;
-            //    client.Send(message);
-            //}
-            //catch (Exception)
-            //{
-            //    throw;
-            //}
+            try
+            {
+                SmtpClient client = new SmtpClient("smtp-mail.outlook.com");
+                client.Port = 587;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                System.Net.NetworkCredential credential = new System.Net.NetworkCredential("bookingflightticket@outlook.com", "Nurlanaztu2003.");
+                client.EnableSsl = true;
+                client.Credentials = credential;
+                MailMessage message = new MailMessage("bookingflightticket@outlook.com", userTicket.Email);
+                message.Subject = "Airline Reservation";
+                message.Body = "Hi " + userTicket.Name + " " + "Return The Ticket";
+                message.IsBodyHtml = false;
+                client.Send(message);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
             return RedirectToAction("Index", "Home");
         }
     }
