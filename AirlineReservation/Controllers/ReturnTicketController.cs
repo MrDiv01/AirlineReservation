@@ -35,7 +35,8 @@ namespace AirlineReservation.Controllers
                                                             c.FAirportName.ToLower() == returnTicketDto.FAirportName.ToLower() &&
                                                             c.TAirportName.ToLower() == returnTicketDto.TAirportName.ToLower() &&
                                                             c.FromAirport.ToLower() == returnTicketDto.FromAirport.ToLower() &&
-                                                            c.ToAirport.ToLower() == returnTicketDto.ToAirport.ToLower());
+                                                            c.ToAirport.ToLower() == returnTicketDto.ToAirport.ToLower() &&
+                                                            c.TripCode.ToLower() == returnTicketDto.TripCode.ToLower());
             if (flight == null)
             {
                 return RedirectToAction("Errors", "Error");
@@ -44,7 +45,7 @@ namespace AirlineReservation.Controllers
                                                                                                         c.FlightId == flight.Id);
             if(userTicket == null)
             {
-                return RedirectToAction("Errors","Error");
+                return RedirectToAction("ReturnTicket", "Error");
             }
             _applicationDbContext.UserTickets.Remove(userTicket);
             flight.Count++;
@@ -55,12 +56,12 @@ namespace AirlineReservation.Controllers
                 client.Port = 587;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
-                System.Net.NetworkCredential credential = new System.Net.NetworkCredential("flightrezervation@outlook.com", "Nurlanaztu2003.");
+                System.Net.NetworkCredential credential = new System.Net.NetworkCredential("bookingflightticket@outlook.com", "Nurlanaztu2003.");
                 client.EnableSsl = true;
                 client.Credentials = credential;
-                MailMessage message = new MailMessage("flightrezervation@outlook.com", userTicket.Email);
+                MailMessage message = new MailMessage("bookingflightticket@outlook.com", userTicket.Email);
                 message.Subject = "Airline Reservation";
-                message.Body = "Hi " + userTicket.Name + " " +"Return The Ticket";
+                message.Body = "Hi " + userTicket.Name + " " + "Return The Ticket";
                 message.IsBodyHtml = false;
                 client.Send(message);
             }

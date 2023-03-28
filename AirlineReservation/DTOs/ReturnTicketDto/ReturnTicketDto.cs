@@ -1,4 +1,6 @@
-﻿namespace AirlineReservation.DTOs.ReturnTicketDto
+﻿using AirlineReservation.Models;
+
+namespace AirlineReservation.DTOs.ReturnTicketDto
 {
     public class ReturnTicketDto
     {
@@ -9,5 +11,7 @@
         public string TAirportName { get; set; }
         public DateTime DepartureTime { get; set; }
         public string FinCode { get; set; }
+        public string TripCode { get; set; }
+
     }
 }

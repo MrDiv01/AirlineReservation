@@ -11,7 +11,7 @@
 </head>
 <div class="container">
 
-    <form method="post" asp-action="Update">
+    <form method="post" asp-action="Update" enctype="multipart/form-data">
         <div style="display:flex;flex-direction:column">
             <label asp-for="FAirportName">From City Name</label>
             <select style="margin-bottom:20px" asp-for="FromAirport" id="select1" class="form-select" aria-label="Default select example">
@@ -41,6 +41,10 @@
         <div class="form-group">
             <label asp-for="FlightDay">Flight Day</label>
             <input asp-for="FlightDay" type="date" class="form-control" placeholder="Enter FlightDay">
+        </div>
+        <div class="form-group">
+            <label asp-for="TripCode">Trip Code</label>
+            <input asp-for="TripCode" class="form-control" placeholder="Enter TripCode">
         </div>
 
         <div class="form-group">

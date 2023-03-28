@@ -87,13 +87,14 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.5" />
     <PackageReference Include="System.Speech" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\uploads\HomeSection2\" />
     <Folder Include="wwwroot\uploads\HomeSection1\" />
+    <Folder Include="wwwroot\uploads\FlightImg\" />
   </ItemGroup>
 
 </Project>

@@ -1,10 +1,12 @@
 ﻿using AirlineReservation.Data;
 using AirlineReservation.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AirlineReservation.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class FindUsersController : Controller
     {
         private readonly ApplicationDbContext _applicationDbContext;
@@ -23,7 +25,7 @@ namespace AirlineReservation.Areas.Admin.Controllers
             List<UserTicket> passengers = _applicationDbContext.UserTickets.Where(x => x.FlightId == id).ToList();
             if(passengers.Count == 0)
             {
-                return NotFound();
+                RedirectToAction("SearchUser", "Errors");
             }
 
             return View(passengers);

@@ -8,6 +8,7 @@ namespace AirlineReservation.Data
 	{
 		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 		public DbSet<Flight> Flights { get; set; }
+		
 		public DbSet<UserTicket> UserTickets { get; set; }
 		public DbSet<Contact> Contacts { get; set; }
 		public DbSet<Adres> Adresss { get; set; }
@@ -17,10 +18,11 @@ namespace AirlineReservation.Data
         public DbSet<UserMails> UserMails { get; set; }
 		public DbSet<HeaderDec> HeaderDecs { get; set; }
 		public DbSet<AppUser> AppUsers { get; set; }
+		public DbSet<TicketImages> TicketImage { get; set; }
 
-        //     protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //     {
-        //modelBuilder.Entity<UserTicketİnfo>(c => c.Property(e => e.Id).UseIdentityColumn());
-        //     }
-    }
+		//protected override void OnModelCreating(ModelBuilder modelBuilder)
+		//{
+		//	modelBuilder.Entity<UserTicket>(c => c.Property(e => e.Id).UseIdentityColumn());
+		//}
+	}
 }

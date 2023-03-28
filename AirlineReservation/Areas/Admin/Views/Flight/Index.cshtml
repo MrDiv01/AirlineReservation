@@ -9,10 +9,11 @@
     <table class="table table-bordered table-hover table-condensed mb-4">
         <thead>
             <tr>
+                <th>TripCode</th>
                 <th>From City</th>
                 <th>From Airport Name</th>
-                <th>ToCity</th>
-                <th>To Airport Name</th>
+                <th>To City</th>
+                <th>Destination Airport Name</th>
                 <th>Time</th>
                 <th>Count</th>
                 <th class="text-center">Action</th>
@@ -22,6 +23,7 @@
             @foreach (Flight flight in Model)
             {
                 <tr>
+                    <td>@flight.TripCode</td>
                     <td>@flight.FromAirport</td>
                     <td>@flight.FAirportName</td>
                     <td>@flight.ToAirport</td>
